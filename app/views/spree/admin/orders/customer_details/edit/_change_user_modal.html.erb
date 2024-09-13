@@ -1,0 +1,18 @@
+<div class="js-change-user" data-order-number="<%= @order.number %>">
+  <div id="change-user" data-hook>
+    <fieldset class="no-border-bottom">
+      <legend align="center">User Search</legend>
+      <%# This is connected to the Spree.Views.Order.UserUpdater backbone view %>
+      <%= hidden_field_tag(
+            :order_user_update,
+            nil,
+            {
+              'data-order-number' => @order.number,
+              'data-order-user-email' => @order.user&.email,
+              'data-order-id' => @order.id
+            }) %>
+    </fieldset>
+  </div>
+
+  <%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
+</div>

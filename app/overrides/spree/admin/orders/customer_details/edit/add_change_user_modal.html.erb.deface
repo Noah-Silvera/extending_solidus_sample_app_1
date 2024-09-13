@@ -1,0 +1,22 @@
+<!-- insert_before ".js-customer-details" -->
+
+<%= content_for :head do %>
+  <%= javascript_include_tag 'spree/backend/user_select' %>
+  <%= javascript_include_tag 'spree/backend/user_updater' %>
+  <%= javascript_include_tag 'spree/backend/customer_details_edit' %>
+<% end %>
+
+<div>
+  <fieldset class="no-border-bottom" style="display: flex; justify-content: center;">
+  <legend align="center">User Override</legend>
+  <button data-toggle="modal" data-target="#modal-order-<%= @order.id %>">
+    Change Order User
+  </button>
+  <%= render(
+    "spree/admin/shared/modal",
+    target: "modal-order-#{@order.id}",
+    title: "#{@order.number} - Change User",
+    content: render("spree/admin/orders/customer_details/edit/change_user_modal")
+  ) %>
+</fieldset>
+</div>
